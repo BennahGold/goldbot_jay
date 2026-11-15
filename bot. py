@@ -1,0 +1,20 @@
+python
+# GoldBot Jay - Bot rahisi ya Gold Price
+import requests
+import time
+
+def get_gold_price():
+    try:
+        url = "https://data-asg.goldprice.org/dbXRates/USD"
+        r = requests.get(url, timeout=10)
+        data = r.json()
+        price = data['items'][0]['curr'] + ' ' + str(data['items'][0]['xauPrice'])
+        return price
+    except Exception as e:
+        return f"Error: {e}"
+
+print("GoldBot Jay imewaka! 🔥")
+while True:
+    price = get_gold_price()
+    print(f"Gold Price Sasa: {price}")
+    time.sleep(60) 
